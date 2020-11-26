@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Spring Framework Guru</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(siswas)}">
+        <h2>Siswa List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Nama</th>
+                <th>NIM</th>
+                <th>Kelas</th>
+                <th>Prodi</th>
+                <th>Jurusan</th>
+                <th>Fakultas</th>
+            </tr>
+            <tr th:each="siswa : ${siswas}">
+                <td th:text="${siswa.id}"><a href="/siswa/${siswa.id}">Id</a></td>
+                <td th:text="${siswa.nama}">Siswa Id</td>
+                <td th:text="${siswa.nim}">NIM</td>
+                <td th:text="${siswa.kelas}">Kelas</td>
+                <td th:text="${siswa.prodi}">Prodi</td>
+                <td th:text="${siswa.jurusan}">Jurusan</td>
+                <td th:text="${siswa.fakultas}">Fakultas</td>
+                <td><a th:href="${'/siswa/' + siswa.id}">View</a></td>
+                <td><a th:href="${'/siswa/edit/' + siswa.id}">Edit</a></td>
+                <td><a th:href="${'/siswa/delete/' + siswa.id}">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
